@@ -23,6 +23,7 @@ A simple Todo List web application built with PHP and MySQL.
 - HTML
 - CSS
 - XAMPP
+- Composer
 - Git
 - GitHub
 
@@ -36,26 +37,25 @@ A simple Todo List web application built with PHP and MySQL.
 - `complete.php` - Marks a task as completed
 - `pending.php` - Changes a task back to pending
 - `db.php` - Database connection
+- `db.example.php` - Example database configuration
 - `database.sql` - Database schema
 - `style.css` - Application styling
 
 ## Database Setup
 
 1. Create the database using `database.sql`.
-2. Configure your local database connection in `db.php`.
+2. Configure the database connection using `.env`.
 3. Start Apache and MySQL using XAMPP.
 4. Place the project inside the XAMPP `htdocs` directory.
 5. Open the application in your browser.
 
-## Security
+## Environment Configuration
 
-The project uses:
+Create a `.env` file in the project root:
 
-- Prepared Statements to prevent SQL Injection.
-- Input validation for user-provided data.
-- `htmlspecialchars()` when displaying user input.
-- `.gitignore` to prevent database credentials from being uploaded.
-
-## Author
-
-Naziha Bniyan
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=todo_app
+```
