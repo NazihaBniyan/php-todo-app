@@ -1,5 +1,7 @@
 # PHP Todo App
 
+![PHP Todo App Screenshot](screenshot.png)
+
 A simple Todo List web application built with PHP and MySQL.
 
 ## Features
