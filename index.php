@@ -34,24 +34,42 @@ $result = $conn->query("SELECT * FROM tasks ORDER BY id DESC");
 
     <?php while ($task = $result->fetch_assoc()) { ?>
 
-   <div class="task">
+   <div class="task <?php echo $task["status"]; ?>">
 
-    <span>
-        <?php echo htmlspecialchars($task["title"]); ?>
-    </span>
+    <div>
+        <span>
+            <?php echo htmlspecialchars($task["title"]); ?>
+        </span>
+
+        <strong>
+            (<?php echo htmlspecialchars($task["status"]); ?>)
+        </strong>
+    </div>
 
     <div class="actions">
 
         <a href="edit.php?id=<?php echo $task["id"]; ?>">
             Edit
         </a>
+        <?php if ($task["status"] === "pending") { ?>
 
-        <a 
-    href="delete.php?id=<?php echo $task["id"]; ?>"
-    onclick="return confirm('Are you sure you want to delete this task?');"
->
-    Delete
-</a>
+    <a href="complete.php?id=<?php echo $task["id"]; ?>">
+        Complete
+    </a>
+
+<?php } else { ?>
+
+    <a href="pending.php?id=<?php echo $task["id"]; ?>">
+        Mark as Pending
+    </a>
+
+<?php } ?>
+        <a
+            href="delete.php?id=<?php echo $task["id"]; ?>"
+            onclick="return confirm('Are you sure you want to delete this task?');"
+        >
+            Delete
+        </a>
 
     </div>
 
